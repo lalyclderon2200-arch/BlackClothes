@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administración · Blackclothes</title>
+<style>
+  :root {
+    --vino: #6a0f26;
+    --vino-osc: #470a1a;
+    --papel: #f5f1f0;
+    --blanco: #ffffff;
+    --tinta: #1d1416;
+    --gris: #7b6e71;
+    --linea: #ddd3d5;
+    --alerta: #b3261e;
+    --ok: #1f6b3a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--papel); color: var(--tinta);
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; font-size: 15px; line-height: 1.45;
+  }
+  button, input, select, textarea { font: inherit; }
+  :focus-visible { outline: 3px solid #e0a3b3; outline-offset: 2px; }
+
+  header { background: var(--vino); color: #fff; padding: 18px 28px 0; }
+  header h1 { margin: 0 0 14px; font-size: 1.35rem; font-weight: 600; letter-spacing: .2px; }
+  nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav button {
+    border: 0; background: transparent; color: #f0cfd8; padding: 10px 20px; cursor: pointer;
+    border-radius: 10px 10px 0 0; font-weight: 500;
+  }
+  nav button:hover { background: var(--vino-osc); color: #fff; }
+  nav button[aria-selected="true"] { background: var(--papel); color: var(--vino); font-weight: 700; }
+
+  main { max-width: 1280px; margin: 0 auto; padding: 24px 28px 60px; }
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .barra h2 { margin: 0; font-size: 1.2rem; }
+  .barra .cuenta { color: var(--gris); font-weight: 400; font-size: .95rem; margin-left: 8px; }
+
+  .btn { border: 1px solid var(--vino); background: var(--vino); color: #fff; padding: 9px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+  .btn:hover { background: var(--vino-osc); }
+  .btn.claro { background: var(--blanco); color: var(--vino); }
+  .btn.claro:hover { background: #f3e6ea; }
+  .btn.peligro { background: var(--blanco); color: var(--alerta); border-color: var(--alerta); }
+  .btn.peligro:hover { background: #fbeceb; }
+  .grupo-botones { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn.chico { padding: 5px 12px; font-size: .88rem; }
+
+  .tabla-caja { background: var(--blanco); border: 1px solid var(--linea); border-radius: 10px; overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--linea); vertical-align: top; }
+  th { background: #faf6f5; font-size: .85rem; color: var(--gris); font-weight: 600; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  td.celda { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  td.vacio { color: #b3a6a9; }
+  td.acciones { white-space: nowrap; display: flex; gap: 6px; }
+  .nota { padding: 12px 16px; background: #fff6e0; border-bottom: 1px solid #ecd9a6; color: #5c4500; font-size: .92rem; }
+  .sin-datos { padding: 36px; text-align: center; color: var(--gris); }
+
+  /* Modal */
+  dialog { border: 0; border-radius: 12px; padding: 0; width: min(560px, 94vw); box-shadow: 0 18px 60px rgba(0,0,0,.35); }
+  dialog::backdrop { background: rgba(30, 8, 14, .55); }
+  .modal-cab { padding: 16px 22px; border-bottom: 1px solid var(--linea); display: flex; justify-content: space-between; align-items: center; }
+  .modal-cab h3 { margin: 0; font-size: 1.1rem; }
+  .cerrar { border: 0; background: none; font-size: 1.6rem; cursor: pointer; color: var(--gris); line-height: 1; }
+  form.campos { padding: 18px 22px 22px; display: grid; gap: 14px; max-height: 70vh; overflow-y: auto; }
+  label { display: grid; gap: 5px; font-weight: 600; font-size: .9rem; }
+  label small { font-weight: 400; color: var(--gris); }
+  input, select, textarea { padding: 9px 11px; border: 1px solid #c9bcc0; border-radius: 7px; background: #fff; width: 100%; }
+  textarea { min-height: 84px; resize: vertical; }
+  .vista { max-width: 100%; max-height: 130px; object-fit: contain; border: 1px solid var(--linea); border-radius: 8px; background: #faf6f5; justify-self: start; }
+  .pie-form { display: flex; justify-content: flex-end; gap: 10px; padding-top: 6px; }
+
+  /* Acceso */
+  #acceso { position: fixed; inset: 0; background: var(--vino); display: none; place-items: center; z-index: 10; }
+  #acceso.visible { display: grid; }
+  #acceso form { background: #fff; padding: 28px; border-radius: 12px; width: min(380px, 92vw); display: grid; gap: 14px; }
+  #acceso h2 { margin: 0; }
+
+  #aviso {
+    position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); padding: 11px 20px; border-radius: 8px;
+    color: #fff; font-weight: 600; display: none; max-width: 92vw; z-index: 20;
+  }
+  #aviso.ok { background: var(--ok); display: block; }
+  #aviso.error { background: var(--alerta); display: block; }
+</style>
+</head>
+<body>
+
+<div id="acceso" class="visible">
+  <form id="formAcceso">
+    <h2>Administración</h2>
+    <label>Clave de administrador
+      <input type="password" id="inputClave" autocomplete="current-password" required>
+    </label>
+    <button class="btn" type="submit">Entrar</button>
+  </form>
+</div>
+
+<header>
+  <h1>Administración Blackclothes</h1>
+  <nav id="pestanas" role="tablist"></nav>
+</header>
+
+<main>
+  <div class="barra">
+    <h2><span id="titulo">Pedidos</span><span class="cuenta" id="cuenta"></span></h2>
+    <div class="grupo-botones">
+      <button class="btn claro" id="btnExcelTabla" type="button">Excel de esta tabla</button>
+      <button class="btn claro" id="btnExcelTodo" type="button">Reporte completo en Excel</button>
+      <button class="btn" id="btnNuevo" type="button">Añadir registro</button>
+    </div>
+  </div>
+  <div class="tabla-caja" id="contenedor"></div>
+</main>
+
+<dialog id="modal">
+  <div class="modal-cab">
+    <h3 id="modalTitulo">Añadir registro</h3>
+    <button class="cerrar" type="button" id="btnCerrar" aria-label="Cerrar">&times;</button>
+  </div>
+  <form class="campos" id="formRegistro"></form>
+</dialog>
+
+<div id="aviso" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+  // Archivo PHP y carpetas donde buscarlo, en orden.
+  //  './' = la misma carpeta de esta página
+  const API = 'admin_api.php';
+  const CARPETAS_PHP = [
+    './',
+    'http://localhost/registrar/',
+    'http://localhost/blackclothes/'
+  ];
+  let carpetaActiva = null;   // se recuerda la que funcionó
+
+  const TABLAS = [
+    ['pedidos', 'Pedidos'],
+    ['producto', 'Productos'],
+    ['promociones', 'Promociones'],
+    ['usuarios', 'Usuarios']
+  ];
+
+  let clave = sessionStorage.getItem('adminClave') || '';
+  let tabla = 'pedidos';
+  let meta = null;          // { columnas, pk, filas }
+  let editando = null;      // id del registro que se edita (null = nuevo)
+
+  const $ = (id) => document.getElementById(id);
+
+  // ---------- Avisos ----------
+  let temporizador;
+  function avisar(texto, tipo) {
+    const el = $('aviso');
+    el.textContent = texto;
+    el.className = tipo;
+    clearTimeout(temporizador);
+    temporizador = setTimeout(() => { el.className = ''; }, 3800);
+  }
+
+  // ---------- Llamadas al PHP ----------
+  async function api(accion, extra = {}, nombreTabla = tabla) {
+    const cuerpo = () => new URLSearchParams({ accion, tabla: nombreTabla, clave_admin: clave, ...extra });
+    const bases = carpetaActiva ? [carpetaActiva] : CARPETAS_PHP;
+    const intentadas = [];
+    let resp = null;
+
+    for (const base of bases) {
+      try {
+        const r = await fetch(base + API, { method: 'POST', body: cuerpo() });
+        if (r.status === 404) { intentadas.push(base + API); continue; }
+        resp = r;
+        carpetaActiva = base;
+        break;
+      } catch (e) {
+        intentadas.push(base + API);
+      }
+    }
+
+    if (!resp) {
+      throw new Error('No se encontró admin_api.php. Se buscó en: ' + intentadas.join(' , ') +
+        '. Copia admin_api.php y conexion_db.php a la misma carpeta que admin.html y revisa que Apache esté encendido.');
+    }
+
+    const texto = await resp.text();
+    let json;
+    try { json = JSON.parse(texto); }
+    catch (e) { console.error(texto); throw new Error('El PHP devolvió un error en lugar de JSON. Abre F12 → Console para verlo.'); }
+    if (json.codigo === 'clave') { pedirClave(); }
+    if (!json.ok) throw new Error(json.mensaje);
+    return json;
+  }
+
+  // Reduce las fotos pesadas (por ejemplo del celular) antes de subirlas
+  async function reducirImagen(archivo) {
+    if (archivo.size <= 1.5 * 1024 * 1024) return archivo;
+    try {
+      const bmp = await createImageBitmap(archivo);
+      const k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+      const cv = document.createElement('canvas');
+      cv.width = Math.round(bmp.width * k);
+      cv.height = Math.round(bmp.height * k);
+      const ctx = cv.getContext('2d');
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, cv.width, cv.height);
+      ctx.drawImage(bmp, 0, 0, cv.width, cv.height);
+      const blob = await new Promise(res => cv.toBlob(res, 'image/jpeg', 0.85));
+      if (!blob) return archivo;
+      return new File([blob], archivo.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
+    } catch (e) {
+      return archivo;
+    }
+  }
+
+  async function subirImagen(archivo) {
+    const fd = new FormData();
+    fd.append('accion', 'subir_imagen');
+    fd.append('tabla', tabla);
+    fd.append('clave_admin', clave);
+    fd.append('archivo', archivo, archivo.name);
+    let resp;
+    try {
+      resp = await fetch((carpetaActiva || './') + API, { method: 'POST', body: fd });
+    } catch (e) {
+      throw new Error('No se pudo conectar con admin_api.php para subir la imagen.');
+    }
+    const texto = await resp.text();
+    let json;
+    try { json = JSON.parse(texto); }
+    catch (e) { console.error(texto); throw new Error('El PHP devolvió un error al subir la imagen. Mira F12 → Console.'); }
+    if (!json.ok) throw new Error(json.mensaje);
+    return json;
+  }
+
+  function pedirClave() {
+    sessionStorage.removeItem('adminClave');
+    clave = '';
+    $('acceso').classList.add('visible');
+    $('inputClave').value = '';
+    $('inputClave').focus();
+  }
+
+  // ---------- Pestañas ----------
+  function dibujarPestanas() {
+    const nav = $('pestanas');
+    nav.innerHTML = '';
+    TABLAS.forEach(([id, nombre]) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = nombre;
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', id === tabla ? 'true' : 'false');
+      b.addEventListener('click', () => { tabla = id; dibujarPestanas(); cargar(); });
+      nav.appendChild(b);
+    });
+    $('titulo').textContent = TABLAS.find(t => t[0] === tabla)[1];
+  }
+
+  // ---------- Tabla de datos ----------
+  async function cargar() {
+    $('contenedor').innerHTML = '<div class="sin-datos">Cargando…</div>';
+    $('cuenta').textContent = '';
+    try {
+      meta = await api('listar');
+      dibujarTabla();
+    } catch (e) {
+      $('contenedor').innerHTML = '';
+      const d = document.createElement('div');
+      d.className = 'sin-datos';
+      d.textContent = e.message;
+      $('contenedor').appendChild(d);
+    }
+  }
+
+  function dibujarTabla() {
+    const cont = $('contenedor');
+    cont.innerHTML = '';
+    $('cuenta').textContent = meta.filas.length + (meta.filas.length === 1 ? ' registro' : ' registros');
+
+    if (meta.filas.length === 0) {
+      const d = document.createElement('div');
+      d.className = 'sin-datos';
+      d.textContent = 'Esta tabla está vacía. Usa "Añadir registro" para crear el primero.';
+      cont.appendChild(d);
+      return;
+    }
+
+    const soloLectura = meta.pk === null;
+    if (soloLectura) {
+      const aviso = document.createElement('div');
+      aviso.className = 'nota';
+      aviso.textContent = 'Esta tabla no tiene llave primaria (id): puedes verla, añadir registros y exportarla, pero no editar ni borrar. Agrégale un id en phpMyAdmin para activar esas opciones.';
+      cont.appendChild(aviso);
+    }
+
+    const t = document.createElement('table');
+    const cab = t.createTHead().insertRow();
+    meta.columnas.forEach(c => {
+      const th = document.createElement('th');
+      th.textContent = c.nombre;
+      cab.appendChild(th);
+    });
+    if (!soloLectura) cab.appendChild(document.createElement('th')).textContent = 'Acciones';
+
+    const cuerpo = t.createTBody();
+    meta.filas.forEach(fila => {
+      const tr = cuerpo.insertRow();
+      meta.columnas.forEach(c => {
+        const td = tr.insertCell();
+        const v = fila[c.nombre];
+        if (v === null || v === '') { td.textContent = '—'; td.className = 'vacio'; }
+        else { td.textContent = v; td.className = 'celda'; td.title = v; }
+      });
+      if (soloLectura) return;
+      const acc = tr.insertCell();
+      acc.className = 'acciones';
+      const be = document.createElement('button');
+      be.className = 'btn claro chico'; be.type = 'button'; be.textContent = 'Editar';
+      be.addEventListener('click', () => abrirFormulario(fila));
+      const bb = document.createElement('button');
+      bb.className = 'btn peligro chico'; bb.type = 'button'; bb.textContent = 'Borrar';
+      bb.addEventListener('click', () => borrar(fila));
+      acc.append(be, bb);
+    });
+    cont.appendChild(t);
+  }
+
+  // ---------- Formulario ----------
+  function tipoDeCampo(c) {
+    const t = c.tipo.toLowerCase();
+    if (c.clave_secreta) return 'password';
+    if (c.opciones) return 'fk';
+    if (t.startsWith('enum')) return 'enum';
+    if (t.startsWith('tinyint(1)')) return 'number';
+    if (/int|decimal|numeric|float|double|year/.test(t)) return 'number';
+    if (t === 'date') return 'date';
+    if (/datetime|timestamp/.test(t)) return 'datetime-local';
+    if (t === 'time') return 'time';
+    if (/text|blob|json/.test(t)) return 'textarea';
+    return 'text';
+  }
+
+  function opcionesEnum(tipo) {
+    return [...tipo.matchAll(/'((?:[^']|'')*)'/g)].map(m => m[1].replace(/''/g, "'"));
+  }
+
+  function abrirFormulario(fila) {
+    editando = fila ? fila[meta.pk] : null;
+    $('modalTitulo').textContent = fila ? 'Editar registro' : 'Añadir registro';
+    const form = $('formRegistro');
+    form.innerHTML = '';
+
+    meta.columnas.forEach(c => {
+      if (c.auto) return;                       // el id automático no se escribe
+      const tipo = tipoDeCampo(c);
+      const lab = document.createElement('label');
+      lab.textContent = c.nombre;
+
+      let campo;
+      if (tipo === 'textarea') {
+        campo = document.createElement('textarea');
+      } else if (tipo === 'fk') {
+        campo = document.createElement('select');
+        campo.add(new Option(c.nulo ? '(ninguno)' : '(elige uno)', ''));
+        c.opciones.forEach(o => campo.add(new Option(o.etiqueta, o.valor)));
+        if (c.opciones.length === 0) campo.options[0].text = '(no hay registros en ' + c.fk_tabla + ')';
+      } else if (tipo === 'enum') {
+        campo = document.createElement('select');
+        if (c.nulo) campo.add(new Option('(sin valor)', ''));
+        opcionesEnum(c.tipo).forEach(o => campo.add(new Option(o, o)));
+      } else {
+        campo = document.createElement('input');
+        campo.type = tipo;
+        if (tipo === 'number' && /decimal|float|double/i.test(c.tipo)) campo.step = 'any';
+      }
+      campo.name = c.nombre;
+      campo.dataset.tipo = tipo;
+
+      // Valor actual al editar
+      if (fila && !c.clave_secreta) {
+        let v = fila[c.nombre];
+        if (v === null) v = '';
+        if (tipo === 'datetime-local') v = String(v).replace(' ', 'T').slice(0, 16);
+        campo.value = v;
+      }
+
+      const sinDefecto = !c.nulo && c.defecto === null && !c.auto;
+      if (c.clave_secreta) {
+        campo.autocomplete = 'new-password';
+        if (fila) {
+          const s = document.createElement('small');
+          s.textContent = 'Déjala vacía para conservar la actual.';
+          lab.appendChild(campo); lab.appendChild(s);
+          form.appendChild(lab);
+          campo.required = false;
+          return;
+        }
+        campo.required = sinDefecto;
+      } else if (sinDefecto) {
+        campo.required = true;
+      }
+      lab.appendChild(campo);
+
+      // Columnas de imagen: permite elegir un archivo y subirlo
+      if (/imagen|foto|img|image/i.test(c.nombre) && (tipo === 'text' || tipo === 'textarea')) {
+        campo.placeholder = 'img/archivo.jpg';
+        const sel = document.createElement('input');
+        sel.type = 'file';
+        sel.accept = 'image/*';
+        const estado = document.createElement('small');
+        estado.textContent = 'Elige una imagen para subirla, o escribe la ruta a mano.';
+        const vista = document.createElement('img');
+        vista.className = 'vista';
+        vista.alt = 'Vista previa';
+        vista.hidden = true;
+        sel.addEventListener('change', async () => {
+          const archivo = sel.files[0];
+          if (!archivo) return;
+          vista.src = URL.createObjectURL(archivo);
+          vista.hidden = false;
+          estado.style.color = '';
+          estado.textContent = 'Subiendo…';
+          try {
+            const r = await subirImagen(archivo);
+            campo.value = r.ruta;
+            estado.textContent = 'Imagen subida: ' + r.ruta;
+          } catch (err) {
+            estado.style.color = 'var(--alerta)';
+            estado.textContent = err.message;
+          }
+        });
+        lab.append(sel, estado, vista);
+      }
+
+      form.appendChild(lab);
+    });
+
+    const pie = document.createElement('div');
+    pie.className = 'pie-form';
+    const cancelar = document.createElement('button');
+    cancelar.type = 'button'; cancelar.className = 'btn claro'; cancelar.textContent = 'Cancelar';
+    cancelar.addEventListener('click', () => $('modal').close());
+    const guardar = document.createElement('button');
+    guardar.type = 'submit'; guardar.className = 'btn'; guardar.textContent = fila ? 'Guardar cambios' : 'Añadir';
+    pie.append(cancelar, guardar);
+    form.appendChild(pie);
+
+    $('modal').showModal();
+  }
+
+  $('formRegistro').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const datos = {};
+    e.target.querySelectorAll('[name]').forEach(campo => {
+      let v = campo.value;
+      if (campo.dataset.tipo === 'datetime-local' && v) v = v.replace('T', ' ') + ':00';
+      datos[campo.name] = v;
+    });
+
+    try {
+      const extra = { datos: JSON.stringify(datos) };
+      if (editando !== null) extra.id = editando;
+      const r = await api(editando === null ? 'crear' : 'actualizar', extra);
+      $('modal').close();
+      avisar(r.mensaje, 'ok');
+      cargar();
+    } catch (err) {
+      avisar(err.message, 'error');
+    }
+  });
+
+  async function borrar(fila) {
+    const id = fila[meta.pk];
+    if (!confirm('¿Borrar el registro ' + id + '? Esta acción no se puede deshacer.')) return;
+    try {
+      const r = await api('borrar', { id });
+      avisar(r.mensaje, 'ok');
+      cargar();
+    } catch (err) {
+      avisar(err.message, 'error');
+    }
+  }
+
+
+  // ---------- Reporte en Excel ----------
+  function hojaDeTabla(datos) {
+    // No se exportan las contraseñas
+    const cols = datos.columnas.filter(c => !c.clave_secreta);
+    const esNumero = c => /int|decimal|numeric|float|double/i.test(c.tipo) && !/^tinyint\(1\)/i.test(c.tipo) ? true : false;
+    const filas = [cols.map(c => c.nombre)];
+    datos.filas.forEach(f => {
+      filas.push(cols.map(c => {
+        const v = f[c.nombre];
+        if (v === null || v === '') return '';
+        return esNumero(c) && !isNaN(v) ? Number(v) : v;
+      }));
+    });
+    const hoja = XLSX.utils.aoa_to_sheet(filas);
+    hoja['!cols'] = cols.map((c, i) => ({
+      wch: Math.min(40, Math.max(c.nombre.length, ...filas.slice(1, 60).map(r => String(r[i]).length)) + 2)
+    }));
+    return hoja;
+  }
+
+  async function exportarExcel(todas) {
+    if (typeof XLSX === 'undefined') {
+      avisar('No se cargó la librería de Excel. Conéctate a internet y recarga la página.', 'error');
+      return;
+    }
+    try {
+      const libro = XLSX.utils.book_new();
+      const lista = todas ? TABLAS : TABLAS.filter(t => t[0] === tabla);
+      const conteo = [];
+      for (const [id, nombre] of lista) {
+        const datos = await api('listar', {}, id);
+        XLSX.utils.book_append_sheet(libro, hojaDeTabla(datos), nombre);
+        conteo.push(nombre + ': ' + datos.filas.length);
+      }
+      const fecha = new Date().toISOString().slice(0, 10);
+      const archivo = todas ? 'reporte_blackclothes_' + fecha + '.xlsx'
+                            : tabla + '_' + fecha + '.xlsx';
+      XLSX.writeFile(libro, archivo);
+      avisar('Excel descargado (' + conteo.join(', ') + ' filas)', 'ok');
+    } catch (err) {
+      avisar(err.message, 'error');
+    }
+  }
+
+  $('btnExcelTabla').addEventListener('click', () => exportarExcel(false));
+  $('btnExcelTodo').addEventListener('click', () => exportarExcel(true));
+
+  // ---------- Eventos generales ----------
+  $('btnNuevo').addEventListener('click', () => { if (meta) abrirFormulario(null); });
+  $('btnCerrar').addEventListener('click', () => $('modal').close());
+
+  $('formAcceso').addEventListener('submit', (e) => {
+    e.preventDefault();
+    clave = $('inputClave').value;
+    sessionStorage.setItem('adminClave', clave);
+    $('acceso').classList.remove('visible');
+    cargar();
+  });
+
+  // ---------- Inicio ----------
+  dibujarPestanas();
+  if (clave) { $('acceso').classList.remove('visible'); cargar(); }
+  else { $('inputClave').focus(); }
+</script>
+</body>
+</html>

@@ -1,0 +1,631 @@
+:root {
+  --color-primary: #D64545;
+  --color-secondary: #ff4757;
+  --color-dark: #1f2937;
+  --color-light: #f8f9fa;
+  --color-border: #e5e7eb;
+  --radius: 8px;
+  
+  --btn-size: 60px;
+  --chat-width: 380px;
+  --chat-bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #C8102e;
+  color: #ffffff;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #1c2331;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-enlace img {  
+  height: 75px; 
+  width: auto;  
+  display: block;  
+}  
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+nav a {
+  background: var(--color-primary);
+  text-decoration: none;
+  color: #ffffff;
+  border: 2px solid #000000;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+nav a:hover {
+  background-color: #899196;
+  border-color: #ffffff;
+}
+
+.submenu {
+  position: relative;
+}
+
+.submenu-trigger {
+  background: var(--color-primary);
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  border: 2px solid #000000;
+  color: #ffffff;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.submenu-content {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0;
+  background: #ffffff;
+  border-radius: var(--radius);
+  min-width: 200px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.submenu-content a {
+  background: transparent;
+  color: #333333;
+  border: none;
+  display: block;
+  padding: 10px 14px;
+}
+
+.submenu-content a:hover {
+  background-color: #f1f2f6;
+  color: var(--color-primary);
+}
+
+.submenu:hover .submenu-content {
+  display: block;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search input[type="search"] {
+  padding: 10px 14px;
+  border: 2px solid #000000;
+  border-radius: var(--radius);
+  outline: none;
+  min-width: 180px;
+}
+
+.search button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.acciones {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.icon-btn {
+  background: #f1f2f6;
+  border: 1px solid #ddd;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  font-size: 20px;
+  color: #333;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.icon-btn:hover {
+  background-color: #e2e8f0;
+  transform: scale(1.08);
+}
+/* Acciones */
+.acciones {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  padding: 15px 15px;
+  border-radius: 8px;
+  border: 1px solid #030303;
+  background-color: #ffffff;
+  color:black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: 1px solid var(--color-primary);
+}
+
+.btn.secondary {
+  background-color: #000000;
+}
+
+.btn:hover {
+  opacity: 0.95;
+}
+
+.hero-text {
+  text-align: center;
+  margin: 60px auto;
+  max-width: 800px;
+}
+.fondo {
+  background-color: #fff ;
+  border: #000000;
+  padding: 10px;
+  border-radius: 90px;
+}
+.hero-text h1 {
+  font-size: 48px;
+  color: black; 
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.lista-empleados {
+    display: flex;
+    flex-direction: column; /* Apila uno debajo del otro */
+    gap: 30px; /* Espacio entre cada tarjeta */
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Diseño individual de la tarjeta (Blanco, Negro y Rojo) */
+.tarjeta-empleado {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* Fondo blanco */
+    border: 2px solid #000000; /* Borde negro */
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 5px 5px 0px #D64545; /* Sombra sólida roja para un estilo moderno */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.tarjeta-empleado:hover {
+    transform: translateY(-5px); /* Pequeño salto al pasar el mouse */
+}
+
+/* --- Sección de la Fotografía --- */
+.contenedor-foto {
+    flex-shrink: 0; /* Evita que la foto se aplaste si hay mucho texto */
+    margin-right: 30px;
+}
+
+.foto-perfil {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Hace la imagen completamente circular */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border: 4px solid #D64545; /* Borde circular rojo */
+    background-color: #000000; /* Fondo negro por si la imagen tarda en cargar */
+}
+
+/* --- Sección de Información --- */
+.info-empleado {
+    flex-grow: 1; /* Ocupa el resto del espacio disponible */
+    color: #000000; /* Texto en negro */
+}
+
+.nombre {
+    margin: 0 0 5px 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.cargo {
+    margin: 0 0 15px 0;
+    color: #D64545; /* Cargo destacado en rojo */
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.descripcion {
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+    font-size: 1rem;
+    color: #333333;
+}
+
+/* --- Sección de la Barra de Porcentaje --- */
+.contenedor-barra {
+    width: 100%;
+}
+
+.etiqueta-barra {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.barra-fondo {
+    width: 100%;
+    background-color: #000000; /* Fondo de la barra en negro */
+    border-radius: 20px;
+    height: 25px;
+    overflow: hidden; /* Mantiene el color de relleno dentro de los bordes redondeados */
+}
+
+.barra-relleno {
+    background-color: #D64545; /* Relleno de la barra en rojo */
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinea el texto del porcentaje a la derecha */
+    padding-right: 15px;
+    color: #ffffff; /* Texto del porcentaje en blanco */
+    font-weight: bold;
+    font-size: 0.85rem;
+    /* Animación suave al cargar si se ajusta mediante JS en el futuro */
+    transition: width 1s ease-in-out; 
+}
+
+/* --- Diseño Responsivo (Para celulares) --- */
+@media (max-width: 600px) {
+    .tarjeta-empleado {
+        flex-direction: column; /* Apila foto arriba y texto abajo en móviles */
+        text-align: center;
+    }
+    .contenedor-foto {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .barra-relleno {
+        justify-content: center;
+        padding-right: 0;
+    }
+}
+/* ================= CHAT FLOTANTE MEJORADO Y ESTÉTICO ================= */
+.chat-container-wrapper {
+  position: fixed; bottom: 25px; right: 25px; z-index: 1000;
+  display: flex; flex-direction: column; align-items: flex-end;
+}
+
+.chat {
+  width: var(--chat-width); max-width: 90vw; height: 0;
+  overflow: hidden; transition: height 0.35s ease, opacity 0.3s ease;
+  opacity: 0; border-radius: 16px; box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+  border: 1px solid var(--color-border); background: var(--chat-bg); margin-bottom: 12px;
+  display: flex; flex-direction: column;
+}
+
+.chat.open { height: 440px; opacity: 1; }
+
+.chat-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px; background: #ffffff; border-bottom: 1px solid #f0f0f0; color: #333;
+}
+
+.chat-header-info {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.chat-avatar {
+  width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-primary);
+}
+
+.chat-title { font-weight: bold; font-size: 14px; display: block; color: #2c3e50; }
+.chat-status { font-size: 11px; color: #27ae60; font-weight: 600; display: block; }
+
+.chat-close-btn {
+  background: #f1f2f6; border: none; font-size: 18px; width: 30px; height: 30px; border-radius: 50%;
+  cursor: pointer; color: #555; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+}
+.chat-close-btn:hover { background: #e2e8f0; }
+
+.chat-body {
+  padding: 15px; flex: 1; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; gap: 10px;
+}
+
+.message {
+  margin: 2px 0; padding: 10px 14px; border-radius: 14px; max-width: 80%; font-size: 13.5px; line-height: 1.4;
+}
+.msg-user { background: #3b82f6; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.msg-bot { background: #ffffff; color: #333; align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eee; }
+
+.chat-input {
+  display: flex; padding: 12px; gap: 8px; background-color: #ffffff; border-top: 1px solid #f0f0f0;
+}
+.chat-input input {
+  flex: 1; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 20px; outline: none; font-size: 13px;
+}
+.chat-input button {
+  padding: 0 16px; border-radius: 20px; border: none; background: var(--color-primary); color: #ffffff; font-weight: bold; cursor: pointer; transition: background 0.2s;
+}
+.chat-input button:hover { background: #b53535; }
+
+/* Botón flotante con la imagen del logo */
+.chat-toggle {
+  width: var(--btn-size); height: var(--btn-size); border-radius: 80%;
+  background: #ffffff; border: 3px solid var(--color-primary); padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3); cursor: pointer; overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.4);
+
+}
+.container {
+  max-width: 1100px;
+  margin: 30px auto; padding: 0 20px;
+}
+
+.container section {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px; border-radius: 8px; text-align: center;
+}
+
+/* Modales */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 2000;
+}
+
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+.modal-content {
+  background: #ffffff; color: #333; width: 90%; max-width: 480px;
+  border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+  padding: 16px 20px; background: #f8f9fa; border-bottom: 1px solid #eee;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #666; }
+.modal-body { padding: 20px; max-height: 70vh; overflow-y: auto; }
+
+/* Estilos Específicos para Modal de Búsqueda */
+.search-modal-content { max-width: 700px; }
+.search-results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+
+.product-detail-modal { max-width: 550px; }
+.detail-body-content { display: flex; flex-direction: column; gap: 15px; }
+.detail-img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; }
+.detail-tag { background: #e2e8f0; color: #333; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 8px; }
+.detail-description { font-size: 14px; color: #555; margin-bottom: 10px; line-height: 1.4; }
+.detail-price { font-size: 1.6rem; color: #27ae60; font-weight: bold; margin-bottom: 15px; }
+.detail-actions { display: flex; gap: 10px; }
+.detail-actions button { flex: 1; padding: 12px; font-weight: bold; }
+
+.auth-tabs { display: flex; margin-bottom: 15px; border-bottom: 2px solid #eee; }
+.tab-btn { flex: 1; background: none; border: none; padding: 10px; font-weight: bold; cursor: pointer; color: #666; }
+.tab-btn.active { color: var(--color-primary); border-bottom: 2px solid var(--color-primary); margin-bottom: -2px; }
+
+.auth-message {
+  padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 13px; font-weight: bold; text-align: center;
+}
+.auth-message.error { background: #fde8e8; color: #c53030; border: 1px solid #f8b4b4; }
+.auth-message.success { background: #def7ec; color: #03543f; border: 1px solid #84e1bc; }
+
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 13px; }
+.form-input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; outline: none; }
+.btn-block { width: 100%; padding: 12px; margin-top: 10px; }
+
+.modal-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+.modal-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 6px; }
+.modal-item-info { flex: 1; margin-left: 12px; }
+.modal-item-title { font-size: 14px; font-weight: 600; }
+.modal-item-price { font-size: 13px; color: #27ae60; font-weight: bold; }
+.btn-remove { background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 18px; }
+
+/* ================= ESTILOS TARJETA VIRTUAL (MODAL EMPLEADO) ================= */
+.modal-card-v {
+  background: #ffffff;
+  color: #111111;
+  width: 90%;
+  max-width: 380px;
+  border-radius: 20px;
+  padding: 25px 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  position: relative;
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 2px solid #000000;
+}
+
+.card-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  background: #f1f2f6;
+  border: none;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-close-btn:hover {
+  background: #D64545;
+  color: #ffffff;
+}
+
+.vcard-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #D64545;
+  margin-bottom: 12px;
+}
+
+.vcard-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: #000000;
+}
+
+.vcard-sub {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #D64545;
+  margin-bottom: 10px;
+}
+
+.vcard-desc {
+  font-size: 0.85rem;
+  color: #444444;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  padding: 0 10px;
+}
+
+.vcard-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 18px;
+  word-break: break-all;
+}
+
+.vcard-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.vbtn {
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.vbtn-primary {
+  background-color: #D64545;
+  color: #ffffff;
+  width: 100%;
+}
+
+.vbtn-primary:hover {
+  background-color: #b53535;
+}
+
+.vbtn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.vbtn-dark {
+  flex: 1;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.vbtn-dark:hover {
+  background-color: #222222;
+}
+
+.vcard-contacto {
+  text-align: left;
+  border-top: 1px solid #eeeeee;
+  padding-top: 15px;
+}
+
+.vcard-contacto h4 {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #666666;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.vcard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.vcard-btn {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px;
+  color: #111111;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.vcard-btn:hover {
+  background: #f1f2f6;
+  border-color: #D64545;
+  color: #D64545;
+}

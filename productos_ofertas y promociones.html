@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blackclothes - Halloween Ofertas</title>
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  
+  <!-- Hoja de Estilos Principal -->
+  <link rel="stylesheet" href="css/css  catalogo.css" />
+  <style>
+    /* ================= BANNER HALLOWEEN PERSONALIZADO ================= */
+    .banner-halloween-spooky {
+      position: relative;
+      background: linear-gradient(135deg, #111111 0%, #2b0b00 50%, #d64545 100%);
+      color: #ffffff;
+      padding: 60px 30px;
+      border-radius: 16px;
+      margin: 20px auto 40px auto;
+      max-width: 1240px;
+      overflow: hidden;
+      border: 2px solid #ff7518;
+      box-shadow: 0 10px 30px rgba(255, 117, 24, 0.3);
+    }
+
+    .banner-contenido-spooky {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .tag-halloween-spooky {
+      display: inline-block;
+      background: #ff7518;
+      color: #000000;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .titulo-banner-spooky {
+      font-size: 2.3rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      color: #ffffff;
+    }
+
+    .descripcion-banner-spooky {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #e0e0e0;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-banner-spooky {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #ff7518;
+      color: #000000;
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 117, 24, 0.4);
+    }
+
+    .btn-banner-spooky:hover {
+      background-color: #ffffff;
+      color: #d64545;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .decoracion-spooky {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.12);
+      font-size: 8rem;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .telarana-izq {
+      top: -20px;
+      left: -20px;
+      transform: rotate(-20deg);
+    }
+
+    .telarana-der {
+      bottom: -30px;
+      right: 10px;
+      transform: rotate(40deg);
+    }
+
+    .murcielago {
+      position: absolute;
+      font-size: 2.2rem;
+      opacity: 0.8;
+      z-index: 1;
+      pointer-events: none;
+      animation: flotarBat 3s ease-in-out infinite alternate;
+    }
+
+    .murcielago-1 {
+      top: 20px;
+      right: 120px;
+    }
+
+    .murcielago-2 {
+      bottom: 20px;
+      left: 45%;
+      animation-delay: 1.5s;
+    }
+
+    .calabaza-bg {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12rem;
+      opacity: 0.25;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes flotarBat {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-12px) rotate(8deg); }
+    }
+
+    @media (max-width: 768px) {
+      .titulo-banner-spooky { font-size: 1.7rem; }
+      .calabaza-bg { font-size: 7rem; right: -10px; }
+      .banner-halloween-spooky { padding: 35px 20px; }
+    }
+  </style>
+</head> 
+<body>
+
+  <!-- ENCABEZADO Y NAVEGACIÓN -->
+  <header>  
+    <a href="index2.html" class="logo-enlace" aria-label="Ir a la página de inicio">  
+      <img src="img/logo principal.jpg" alt="Logo Blackclothes" />  
+    </a>
+
+    <nav aria-label="Menú principal">
+      <ul>
+        <li class="submenu">
+          <span class="submenu-trigger">Productos</span>
+          <div class="submenu-content" aria-label="Submenú de productos">
+            <a href="producto_catalogo.html"><i class="bi bi-caret-right-fill"></i> Explora el catálogo</a>
+            <a href="productos_ofertas y promociones.html"><i class="bi bi-caret-right-fill"></i> Ofertas y promociones</a>
+           
+          </div>
+        </li>
+        <li class="submenu">
+          <span class="submenu-trigger">Servicios</span>
+          <div class="submenu-content" aria-label="Submenú de servicios">
+            <a href="Servisios_acesorias.html"><i class="bi bi-caret-right-fill"></i> Asesorías</a>
+            <a href="#"><i class="bi bi-caret-right-fill"></i> Suscripción</a>
+          </div>
+        </li>
+        <li>
+          <a href="empleados.html"><i class="bi bi-telephone-fill"></i> Nosotros</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- BARRA DE BÚSQUEDA -->
+    <div class="search" aria-label="Barra de búsqueda">
+      <input type="search" id="inputBusqueda" placeholder="Buscar producto..." aria-label="Buscar" />
+      <button type="button" id="btnBusqueda">Buscar <i class="bi bi-search-heart"></i></button>
+    </div>
+
+    <!-- ACCIONES DE USUARIO -->
+    <div class="acciones" aria-label="Acciones de usuario">
+      <button id="btnAuth" class="icon-btn" aria-label="Iniciar Sesión / Registro" title="Mi Cuenta">
+        <i class="bi bi-person-circle"></i>
+      </button>
+
+      <button id="btnFavs" class="icon-btn" aria-label="Favoritos" title="Favoritos">
+        <i class="bi bi-heart-fill"></i>
+        <span class="badge" id="badgeFavs">0</span>
+      </button>
+
+      <button id="btnCart" class="icon-btn" aria-label="Ver Carrito" title="Carrito">
+        <i class="bi bi-cart-fill"></i>
+        <span class="badge" id="badgeCart">0</span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- SECCIÓN PRINCIPAL DE OFERTAS HALLOWEEN -->
+   
+
+  <main class="catalogo-main-container">
+   
+
+    <!-- BANNER TEMÁTICO DE HALLOWEEN -->
+    <section class="banner-halloween-spooky">
+      <div class="decoracion-spooky telarana-izq"><i class="bi bi-virus"></i></div>
+      <div class="decoracion-spooky telarana-der"><i class="bi bi-virus"></i></div>
+      <div class="murcielago murcielago-1">🦇</div>
+      <div class="murcielago murcielago-2">🦇</div>
+      <div class="calabaza-bg">🎃</div>
+
+      <div class="banner-contenido-spooky">
+        <div class="tag-halloween-spooky">
+          <span>🎃 ESPECIAL DE HALLOWEEN</span>
+        </div>
+        <h1 class="titulo-banner-spooky">
+          Productos Halloween Colombia | Ofertas Especiales y Ventas
+        </h1>
+        <p class="descripcion-banner-spooky">
+          ¡Prepárate para Halloween con nuestras ofertas especiales! Encuentra disfraces, decoraciones espeluznantes y dulces deliciosos para una noche terroríficamente divertida[cite: 4].
+        </p>
+        <a href="#seccionesTopGrid" class="btn-banner-spooky">
+          Ver Ofertas Terroríficas <i class="bi bi-arrow-right-circle-fill"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Fila Superior: Súper Ofertas Terroríficas + Edición Nocturna -->
+    <div class="secciones-top-grid" id="seccionesTopGrid">
+      
+      <!-- Bloque 1: Súper Ofertas Halloween -->
+      <section class="bloque-catalogo">
+        <div class="bloque-header">
+          <h2>Súper <span>Ofertas Terroríficas</span></h2>
+          <a href="#" class="ver-mas-btn"><i class="bi bi-chevron-right"></i></a>
+        </div>
+        <div class="grid-productos-mini">
+          
+          <!-- Producto 1 -->
+          <article class="tarjeta-producto" 
+                   data-id="disfraz-gotico" 
+                   data-nombre="Disfraz Gótico Flash" 
+                   data-precio="29384" 
+                   data-imagen="images/buso.jpeg"
+                   data-tipo="ropa"
+                   data-detalles="Disfraz gótico de edición especial para destacar en cualquier fiesta nocturna de Halloween con estilo único.">
+            <div class="multimedia">
+              <img src="images/buso.jpeg" alt="Disfraz Gótico Flash">
+              <button class="card-action-btn btn-fav" data-id="disfraz-gotico" data-nombre="Disfraz Gótico Flash" data-precio="29384" data-imagen="images/buso.jpeg" title="Favorito">
+                <i class="bi bi-heart-fill"></i>
+              </button>
+            </div>
+            <div class="info">
+              <h3>Disfraz Gótico Flash</h3>
+              <p class="precio">$29.384</p>
+              <button class="btn-agregar" data-id="disfraz-gotico" data-nombre="Disfraz Gótico Flash" data-precio="29384" data-imagen="images/buso.jpeg">Añadir al carrito 🛒</button>
+            </div>
+          </article>
+
+          <!-- Producto 2 -->
+          <article class="tarjeta-producto" 
+                   data-id="chaqueta-oscura" 
+                   data-nombre="Chaqueta Cazadora Oscura" 
+                   data-precio="35992" 
+                   data-imagen="images/chaqueta bombacha.png"
+                   data-tipo="ropa"
+                   data-detalles="Chaqueta cazadora de diseño urbano y oscuro, abrigada y resistente para temporadas de frío y noche de brujas.">
+            <div class="multimedia">
+              <img src="images/chaqueta bombacha.png" alt="Chaqueta Cazadora Oscura">
+              <button class="card-action-btn btn-fav" data-id="chaqueta-oscura" data-nombre="Chaqueta Cazadora Oscura" data-precio="35992" data-imagen="images/chaqueta bombacha.png" title="Favorito">
+                <i class="bi bi-heart-fill"></i>
+              </button>
+            </div>
+            <div class="info">
+              <h3>Chaqueta Cazadora Oscura</h3>
+              <p class="precio">$35.992</p>
+              <button class="btn-agregar" data-id="chaqueta-oscura" data-nombre="Chaqueta Cazadora Oscura" data-precio="35992" data-imagen="images/chaqueta bombacha.png">Añadir al carrito 🛒</button>
+            </div>
+          </article>
+
+          <!-- Producto 3 -->
+          <article class="tarjeta-producto" 
+                   data-id="gabardina-vampiro" 
+                   data-nombre="Gabardina de Cuero Vampiro" 
+                   data-precio="58599" 
+                   data-imagen="images/chaqueta cuero.png"
+                   data-tipo="ropa"
+                   data-detalles="Gabardina larga en cuero sintético de alta calidad con acabado brillante, perfecta para un look imponente de vampiro.">
+            <div class="multimedia">
+              <img src="images/chaqueta cuero.png" alt="Gabardina de Cuero Vampiro">
+              <button class="card-action-btn btn-fav" data-id="gabardina-vampiro" data-nombre="Gabardina de Cuero Vampiro" data-precio="58599" data-imagen="images/chaqueta cuero.png" title="Favorito">
+                <i class="bi bi-heart-fill"></i>
+              </button>
+            </div>
+            <div class="info">
+              <h3>Gabardina de Cuero Vampiro</h3>
+              <p class="precio">$58.599</p>
+              <button class="btn-agregar" data-id="gabardina-vampiro" data-nombre="Gabardina de Cuero Vampiro" data-precio="58599" data-imagen="images/chaqueta cuero.png">Añadir al carrito 🛒</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Bloque 2: Tendencias de Brujas y Oscuridad -->
+      <section class="bloque-catalogo">
+        <div class="bloque-header">
+          <h2>Tendencias <span>Halloween</span></h2>
+          <a href="#" class="ver-mas-btn"><i class="bi bi-chevron-right"></i></a>
+        </div>
+        <div class="grid-productos-mini">
+          
+          <!-- Producto 4 -->
+          <article class="tarjeta-producto" 
+                   data-id="vestido-brujas" 
+                   data-nombre="Vestido Noche de Brujas" 
+                   data-precio="89190" 
+                   data-imagen="images/chaqueta.png"
+                   data-tipo="ropa"
+                   data-detalles="Vestido temático elegante y misterioso diseñado exclusivamente para las festividades nocturnas de octubre.">
+            <div class="multimedia">
+              <img src="images/chaqueta.png" alt="Vestido Noche de Brujas">
+              <button class="card-action-btn btn-fav" data-id="vestido-brujas" data-nombre="Vestido Noche de Brujas" data-precio="89190" data-imagen="images/chaqueta.png" title="Favorito">
+                <i class="bi bi-heart-fill"></i>
+              </button>
+            </div>
+            <div class="info">
+              <h3>Vestido Noche de Brujas</h3>
+              <p class="precio">$89.190</p>
+              <button class="btn-agregar" data-id="vestido-brujas" data-nombre="Vestido Noche de Brujas" data-precio="89190" data-imagen="images/chaqueta.png">Añadir al carrito 🛒</button>
+            </div>
+          </article>
+
+          <!-- Producto 5 -->
+          <article class="tarjeta-producto" 
+                   data-id="jeans-calavera" 
+                   data-nombre="Jeans Overside Calavera" 
+                   data-precio="65090" 
+                   data-imagen="images/jeans overside negro.webp"
+                   data-tipo="ropa"
+                   data-detalles="Pantalón estilo overside en mezclilla oscura con detalles underground, cómodo y de gran durabilidad.">
+            <div class="multimedia">
+              <img src="images/jeans overside negro.webp" alt="Jeans Overside Calavera">
+              <button class="card-action-btn btn-fav" data-id="jeans-calavera" data-nombre="Jeans Overside Calavera" data-precio="65090" data-imagen="images/jeans overside negro.webp" title="Favorito">
+                <i class="bi bi-heart-fill"></i>
+              </button>
+            </div>
+            <div class="info">
+              <h3>Jeans Overside Calavera</h3>
+              <p class="precio">$65.090</p>
+              <button class="btn-agregar" data-id="jeans-calavera" data-nombre="Jeans Overside Calavera" data-precio="65090" data-imagen="images/jeans overside negro.webp">Añadir al carrito 🛒</button>
+            </div>
+          </article>
+
+          <!-- Producto 6 -->
+          <article class="tarjeta-producto" 
+                   data-id="bolso-calabaza" 
+                   data-nombre="Bolso Gótico Calabaza" 
+                   data-precio="19890" 
+                   data-imagen="images/jeans overside.jpg"
+                   data-tipo="accesorio"
+                   data-detalles="Accesorio compacto y funcional de mano con detalles alusivos a la temporada oscura del año.">
+            <div class="multimedia">
+              <img src="images/jeans overside.jpg" alt="Bolso Gótico Calabaza">
+              <button class="card-action-btn btn-fav" data-id="bolso-calabaza" data-nombre="Bolso Gótico Calabaza" data-precio="19890" data-imagen="images/jeans overside.jpg" title="Favorito">
+                <i class="bi bi-heart-fill"></i>
+              </button>
+            </div>
+            <div class="info">
+              <h3>Bolso Gótico Calabaza</h3>
+              <p class="precio">$19.890</p>
+              <button class="btn-agregar" data-id="bolso-calabaza" data-nombre="Bolso Gótico Calabaza" data-precio="19890" data-imagen="images/jeans overside.jpg">Añadir al carrito 🛒</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Divisor Especial -->
+    <div class="separador-para-ti">
+      <span class="linea"></span>
+      <h3>Especiales para tu Noche de Brujas 🎃</h3>
+      <span class="linea"></span>
+    </div>
+
+    <!-- Bloque 3: Colección Especial con Banner -->
+    <section class="seccion-para-ti">
+      <div class="grid-para-ti">
+        
+        <!-- Producto 7 -->
+        <article class="tarjeta-producto" 
+                 data-id="buso-fantasma" 
+                 data-nombre="Buso Estampado Fantasma" 
+                 data-precio="50000" 
+                 data-imagen="images/buso.jpeg"
+                 data-tipo="ropa"
+                 data-detalles="Buzo afelpado con estampado temático de fantasma, ideal para mantener el calor con un toque divertido.">
+          <div class="multimedia">
+            <img src="images/buso.jpeg" alt="Buso Estampado Fantasma">
+            <button class="card-action-btn btn-fav" data-id="buso-fantasma" data-nombre="Buso Estampado Fantasma" data-precio="50000" data-imagen="images/buso.jpeg" title="Favorito">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+          </div>
+          <div class="info">
+            <h3>Buso Estampado Fantasma</h3>
+            <p class="precio">$50.000</p>
+            <button class="btn-agregar" data-id="buso-fantasma" data-nombre="Buso Estampado Fantasma" data-precio="50000" data-imagen="images/buso.jpeg">Añadir al carrito 🛒</button>
+          </div>
+        </article>
+
+        <!-- Producto 8 -->
+        <article class="tarjeta-producto" 
+                 data-id="top-calabaza" 
+                 data-nombre="Top Temático Calabaza" 
+                 data-precio="45000" 
+                 data-imagen="images/chaqueta bombacha.png"
+                 data-tipo="ropa"
+                 data-detalles="Top moderno de corte fresco con detalles inspirados en la festividad de Halloween.">
+          <div class="multimedia">
+            <img src="images/chaqueta bombacha.png" alt="Top Temático Calabaza">
+            <button class="card-action-btn btn-fav" data-id="top-calabaza" data-nombre="Top Temático Calabaza" data-precio="45000" data-imagen="images/chaqueta bombacha.png" title="Favorito">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+          </div>
+          <div class="info">
+            <h3>Top Temático Calabaza</h3>
+            <p class="precio">$45.000</p>
+            <button class="btn-agregar" data-id="top-calabaza" data-nombre="Top Temático Calabaza" data-precio="45000" data-imagen="images/chaqueta bombacha.png">Añadir al carrito 🛒</button>
+          </div>
+        </article>
+
+        <!-- Producto 9 -->
+        <article class="tarjeta-producto" 
+                 data-id="abrigo-gotico" 
+                 data-nombre="Abrigo Largo Gótico" 
+                 data-precio="70000" 
+                 data-imagen="images/chaqueta cuero.png"
+                 data-tipo="ropa"
+                 data-detalles="Abrigo largo con diseño sobrio y elegante para completar atuendos sofisticados de temporada.">
+          <div class="multimedia">
+            <img src="images/chaqueta cuero.png" alt="Abrigo Largo Gótico">
+            <button class="card-action-btn btn-fav" data-id="abrigo-gotico" data-nombre="Abrigo Largo Gótico" data-precio="70000" data-imagen="images/chaqueta cuero.png" title="Favorito">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+          </div>
+          <div class="info">
+            <h3>Abrigo Largo Gótico</h3>
+            <p class="precio">$70.000</p>
+            <button class="btn-agregar" data-id="abrigo-gotico" data-nombre="Abrigo Largo Gótico" data-precio="70000" data-imagen="images/chaqueta cuero.png">Añadir al carrito 🛒</button>
+          </div>
+        </article>
+
+        <!-- Producto 10 -->
+        <article class="tarjeta-producto" 
+                 data-id="acc-calavera" 
+                 data-nombre="Accesorios de Calavera" 
+                 data-precio="35000" 
+                 data-imagen="images/chaqueta.png"
+                 data-tipo="accesorio"
+                 data-detalles="Set de accesorios decorativos y de joyería con temática de calaveras para complementar tu estilo.">
+          <div class="multimedia">
+            <img src="images/chaqueta.png" alt="Accesorios de Calavera">
+            <button class="card-action-btn btn-fav" data-id="acc-calavera" data-nombre="Accesorios de Calavera" data-precio="35000" data-imagen="images/chaqueta.png" title="Favorito">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+          </div>
+          <div class="info">
+            <h3>Accesorios de Calavera</h3>
+            <p class="precio">$35.000</p>
+            <button class="btn-agregar" data-id="acc-calavera" data-nombre="Accesorios de Calavera" data-precio="35000" data-imagen="images/chaqueta.png">Añadir al carrito 🛒</button>
+          </div>
+        </article>
+
+        <!-- Producto 11 -->
+        <article class="tarjeta-producto" 
+                 data-id="pantalon-nocturno" 
+                 data-nombre="Pantalón Ancho Nocturno" 
+                 data-precio="55000" 
+                 data-imagen="images/jeans overside negro.webp"
+                 data-tipo="ropa"
+                 data-detalles="Pantalón ancho y holgado diseñado para máximo confort en tus salidas nocturnas informales.">
+          <div class="multimedia">
+            <img src="images/jeans overside negro.webp" alt="Pantalón Ancho Nocturno">
+            <button class="card-action-btn btn-fav" data-id="pantalon-nocturno" data-nombre="Pantalón Ancho Nocturno" data-precio="55000" data-imagen="images/jeans overside negro.webp" title="Favorito">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+          </div>
+          <div class="info">
+            <h3>Pantalón Ancho Nocturno</h3>
+            <p class="precio">$55.000</p>
+            <button class="btn-agregar" data-id="pantalon-nocturno" data-nombre="Pantalón Ancho Nocturno" data-precio="55000" data-imagen="images/jeans overside negro.webp">Añadir al carrito 🛒</button>
+          </div>
+        </article>
+
+      </div>
+
+     
+    </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="container" aria-label="Contenido principal">
+    <section>
+      <h3>Síguenos en nuestras redes sociales</h3>
+      <p><i class="bi bi-facebook"></i> Facebook: Blackclothes</p>
+      <p><i class="bi bi-instagram"></i> Instagram: Blackclothes_2911</p> 
+      <p><i class="bi bi-whatsapp"></i> WhatsApp: 3194234571</p>
+    </section>
+  </footer>
+
+  <!-- CHAT FLOTANTE ESTÉTICO -->
+  <div class="chat-container-wrapper">
+    <section id="chat" class="chat" aria-label="Chat de soporte">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <img src="img/logo secundario.jpg" alt="Logo Asistente" class="chat-avatar">
+          <div>
+            <span class="chat-title">Soporte Blackclothes</span>
+            <span class="chat-status">● En línea</span>
+          </div>
+        </div>
+        <button id="cerrar" aria-label="Cerrar chat" class="chat-close-btn">&times;</button>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <div class="message msg-bot">¡Hola! 🎃 Bienvenido a la sección de Halloween de Blackclothes. ¿Qué atuendo espeluznante buscas?</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Escribe tu consulta..." />
+        <button id="enviar" aria-label="Enviar mensaje"><i class="bi bi-send-fill"></i></button>
+      </div>
+    </section>
+    
+    <button id="chatToggle" class="chat-toggle" aria-label="Abrir chat">
+      <img src="img/logo secundario.jpg" alt="Abrir chat" class="chat-toggle-logo">
+    </button>
+  </div>
+
+  <!-- MODALES EXISTENTES -->
+  <div class="modal-overlay" id="modalBusqueda">
+    <div class="modal-content search-modal-content">
+      <div class="modal-header">
+        <h3>Resultados de Búsqueda</h3>
+        <button class="close-btn" data-close="modalBusqueda">&times;</button>
+      </div>
+      <div class="modal-body" id="busquedaResultadosContainer"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalProductDetail">
+    <div class="modal-content product-detail-modal">
+      <div class="modal-header">
+        <h3 id="detailTitle">Detalle del Producto</h3>
+        <button class="close-btn" data-close="modalProductDetail">&times;</button>
+      </div>
+      <div class="modal-body detail-body-content">
+        <img id="detailImg" src="" alt="Imagen del producto" class="detail-img">
+        <div class="detail-info">
+          <span id="detailCategory" class="detail-tag"></span>
+          <p id="detailDesc" class="detail-description"></p>
+          <h2 id="detailPrice" class="detail-price"></h2>
+          <div class="detail-actions">
+            <button id="detailBtnCart" class="btn primary">Añadir al carrito 🛒</button>
+            <button id="detailBtnBuy" class="btn secondary">Realizar Compra ⚡</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalAuth">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Iniciar Sesión</h3>
+        <button class="close-btn" data-close="modalAuth">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-tabs">
+          <button type="button" class="tab-btn active" id="tabLoginBtn">Iniciar Sesión</button>
+          <button type="button" class="tab-btn" id="tabRegisterBtn">Registrarse</button>
+        </div>
+        <div id="authMessage" class="auth-message" style="display: none;"></div>
+        <form id="formAuth">
+          <div class="form-group" id="nameGroup" style="display: none;">
+            <label for="authName">Nombre Completo:</label>
+            <input type="text" id="authName" placeholder="Tu nombre" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="authEmail">Correo Electrónico:</label>
+            <input type="email" id="authEmail" placeholder="correo@ejemplo.com" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="authPassword">Contraseña:</label>
+            <input type="password" id="authPassword" placeholder="••••••••" class="form-input">
+          </div>
+          <button type="submit" id="authSubmitBtn" class="btn primary btn-block">Ingresar</button>
+        </form>
+        <div id="userLoggedInfo" style="display: none; text-align: center; padding: 10px;">
+          <p>¡Hola, <span id="loggedUserName"></span>!</p>
+          <p style="font-size: 13px; color: #666;">Ya has iniciado sesión correctamente.</p>
+          <button type="button" id="btnLogout" class="btn" style="background:#e74c3c; color:white; margin-top:15px;">Cerrar Sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalFavs">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Mis Favoritos <i class="bi bi-heart-fill" style="color:#ff4757;"></i></h3>
+        <button class="close-btn" data-close="modalFavs">&times;</button>
+      </div>
+      <div class="modal-body" id="favsListContainer"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalCart">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Carrito de Compras <i class="bi bi-cart-fill" style="color:#2980b9;"></i></h3>
+        <button class="close-btn" data-close="modalCart">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="cartListContainer"></div>
+        <div id="cartCheckoutContainer" style="margin-top: 15px; text-align: right; display:none;">
+          <button id="btnCheckout" class="btn primary" style="width: 100%;">Realizar Compra ⚡</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/script principal.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blackclothes - Tienda Oficial</title>
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  
+  <!-- Hoja de Estilos Principal -->
+  <link rel="stylesheet" href="css/css principal.css" />
+</head> 
+<body>
+
+  <!-- ENCABEZADO Y NAVEGACIÓN -->
+  <header>  
+    <a href="index2.html" class="logo-enlace" aria-label="Ir a la página de inicio">  
+      <img src="img/logo principal.jpg" alt="Logo Blackclothes" />  
+    </a>
+
+    <nav aria-label="Menú principal">
+      <ul>
+        <li class="submenu">
+          <span class="submenu-trigger">Productos</span>
+          <div class="submenu-content" aria-label="Submenú de productos">
+            <a href="producto_catalogo.html"><i class="bi bi-caret-right-fill"></i> Explora el catálogo</a>
+            <a href="productos_ofertas y promociones.html"><i class="bi bi-caret-right-fill"></i> Ofertas y promociones</a>
+            <a href="formularios/formulario_administracion.html">administracion</a>
+          </div>
+        </li>
+        <li class="submenu">
+          <span class="submenu-trigger">Servicios</span>
+          <div class="submenu-content" aria-label="Submenú de servicios">
+            <a href="Servisios_acesorias.html"><i class="bi bi-caret-right-fill"></i> Asesorías</a>
+            <a href="#"><i class="bi bi-caret-right-fill"></i> Suscripción</a>
+          </div>
+        </li>
+        <li>
+          <a href="empleados.html"><i class="bi bi-telephone-fill"></i> Nosotros</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- BARRA DE BÚSQUEDA -->
+    <div class="search" aria-label="Barra de búsqueda">
+      <input type="search" id="inputBusqueda" placeholder="Buscar producto..." aria-label="Buscar" />
+      <button type="button" id="btnBusqueda">Buscar <i class="bi bi-search-heart"></i></button>
+    </div>
+
+    <!-- ACCIONES DE USUARIO -->
+    <div class="acciones" aria-label="Acciones de usuario">
+      <button id="btnAuth" class="icon-btn" aria-label="Iniciar Sesión / Registro" title="Mi Cuenta">
+        <i class="bi bi-person-circle"></i>
+      </button>
+
+      <button id="btnFavs" class="icon-btn" aria-label="Favoritos" title="Favoritos">
+        <i class="bi bi-heart-fill"></i>
+        <span class="badge" id="badgeFavs">0</span>
+      </button>
+
+      <button id="btnCart" class="icon-btn" aria-label="Ver Carrito" title="Carrito">
+        <i class="bi bi-cart-fill"></i>
+        <span class="badge" id="badgeCart">0</span>
+      </button>
+    </div>
+  </header>
+ 
+  <!-- SECCIÓN CARRUSEL PRINCIPAL -->
+  <section class="carousel-section">
+    <div class="carousel-container">
+      <button class="carousel-arrow arrow-prev" id="btnPrev" aria-label="Anterior">&#10094;</button>
+      <button class="carousel-arrow arrow-next" id="btnNext" aria-label="Siguiente">&#10095;</button>
+
+      <div class="carousel-slides-wrapper" id="slidesWrapper">
+        
+        <div class="carousel-slide carousel-link" data-url="" title="Ir a Tendencias">
+          <img src="img/BlackClothes_ ropa que habla por ti.png" alt="Fondo Tendencia" class="media-fondo">
+          <div class="badge-top">En Tendencia</div>
+          <div class="slide-content">
+            <p class="slide-description">Descubre lo último en moda </p>
+          </div>
+        </div>
+
+        <div class="carousel-slide carousel-link" data-url="productos_ofertas y promociones.html" title="Ir a Ofertas">
+        <img src="img/Promoción Halloween_ Estilo que Impacta (1).png" alt="">
+          <div class="badge-top">Super Ofertas</div>
+          <div class="slide-content">
+            <h2 style="margin: 0 0 10px 0; font-size: 2rem;">Gangazos del 20</h2>
+            <p class="slide-description">¿Qué estás esperando? Ven y mira las ofertas</p>
+          </div>
+        </div>
+
+        <div class="carousel-slide carousel-link" data-url="producto_catalogo.html" title="Ir a catalogo">
+          <img src="img/Publicidad urbana de Black Clothes.png" alt="Estilo Personalizado" class="media-fondo">
+          <div class="badge-top">Personalizado</div>
+          <div class="slide-content">
+            <p class="slide-description">no te conformes con el estilo de siepre (Haz clic aquí)</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="carousel-controls" id="indicatorsWrapper">
+        <span class="indicator active" data-slide="0"></span>
+        <span class="indicator" data-slide="1"></span>
+        <span class="indicator" data-slide="2"></span>
+      </div>
+    </div>
+  </section>
+
+ <div class="fondo">
+  <section class="contenedor-productos" id="contenedorProductosGrid">
+
+    <!-- Producto 1 -->
+    <article class="tarjeta-producto" 
+             data-id="1" 
+             data-nombre="Audífonos Inalámbricos" 
+             data-precio="120000" 
+             data-imagen="img/audifonos inalambricos.webp"
+             data-tipo="accesorio"
+             data-detalles="Audífonos bluetooth de alta fidelidad con cancelación de ruido y estuche de carga rápida.">
+      <div class="multimedia">
+        <img src="img/audifonos inalambricos.webp" alt="Audífonos Inalámbricos">
+        <button class="card-action-btn btn-fav" data-id="1" data-nombre="Audífonos Inalámbricos" data-precio="120000" data-imagen="img/audifonos inalambricos.webp" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Audífonos Inalámbricos</h3>
+        <p class="precio">$120.000</p>
+        <button class="btn-agregar" data-id="1" data-nombre="Audífonos Inalámbricos" data-precio="120000" data-imagen="img/producto1.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 2 -->
+    <article class="tarjeta-producto" 
+             data-id="2" 
+             data-nombre="Camiseta Oversize Negra" 
+             data-precio="65000" 
+             data-imagen="img/camiseta overside negra.jpg"
+             data-tipo="ropa"
+             data-detalles="Camiseta estilo oversize de algodón pesado, corte moderno y gran comodidad para el día a día.">
+      <div class="multimedia">
+        <img src="img/camiseta overside negra.jpg" alt="Camiseta Oversize Negra">
+        <button class="card-action-btn btn-fav" data-id="2" data-nombre="Camiseta Oversize Negra" data-precio="65000" data-imagen="img/camiseta overside negra.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Camiseta Oversize Negra</h3>
+        <p class="precio">$65.000</p>
+        <button class="btn-agregar" data-id="2" data-nombre="Camiseta Oversize Negra" data-precio="65000" data-imagen="img/producto2.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 3 -->
+    <article class="tarjeta-producto" 
+             data-id="3" 
+             data-nombre="Hoodie Estilo Urbano" 
+             data-precio="110000" 
+             data-imagen="img/hodiie estilo urbano.jpg"
+             data-tipo="ropa"
+             data-detalles="Sudadera con capucha y bolsillos frontales, tela térmica perchada ideal for climas frescos.">
+      <div class="multimedia">
+        <img src="img/hodiie estilo urbano.jpg" alt="Hoodie Estilo Urbano">
+        <button class="card-action-btn btn-fav" data-id="3" data-nombre="Hoodie Estilo Urbano" data-precio="110000" data-imagen="img/hodiie estilo urbano.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Hoodie Estilo Urbano</h3>
+        <p class="precio">$110.000</p>
+        <button class="btn-agregar" data-id="3" data-nombre="Hoodie Estilo Urbano" data-precio="110000" data-imagen="img/producto3.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 4 -->
+    <article class="tarjeta-producto" 
+             data-id="4" 
+             data-nombre="Gorra Snapback Black" 
+             data-precio="45000" 
+             data-imagen="img/gorra snap black negra.jpg"
+             data-tipo="accesorio"
+             data-detalles="Gorra ajustable con diseño minimalista bordado en alta definición y broche trasero resistente.">
+      <div class="multimedia">
+        <img src="img/gorra snap black negra.jpg" alt="Gorra Snapback Black">
+        <button class="card-action-btn btn-fav" data-id="4" data-nombre="Gorra Snapback Black" data-precio="45000" data-imagen="img/gorra snap black negra.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Gorra Snapback Black</h3>
+        <p class="precio">$45.000</p>
+        <button class="btn-agregar" data-id="4" data-nombre="Gorra Snapback Black" data-precio="45000" data-imagen="img/producto4.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 5 -->
+    <article class="tarjeta-producto" 
+             data-id="5" 
+             data-nombre="Pantalón Cargo Tactical" 
+             data-precio="130000" 
+             data-imagen="img/cargo tactical.webp"
+             data-tipo="ropa"
+             data-detalles="Pantalón estilo cargo con múltiples bolsillos utilitarios, tela flexible y ajuste ergonómico.">
+      <div class="multimedia">
+        <img src="img/cargo tactical.webp" alt="Pantalón Cargo Tactical">
+        <button class="card-action-btn btn-fav" data-id="5" data-nombre="Pantalón Cargo Tactical" data-precio="130000" data-imagen="img/cargo tactical.webp" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Pantalón Cargo Tactical</h3>
+        <p class="precio">$130.000</p>
+        <button class="btn-agregar" data-id="5" data-nombre="Pantalón Cargo Tactical" data-precio="130000" data-imagen="img/producto5.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 6 -->
+    <article class="tarjeta-producto" 
+             data-id="6" 
+             data-nombre="Reloj Digital Sport" 
+             data-precio="95000" 
+             data-imagen="img/relog deportivo.jpg"
+             data-tipo="accesorio"
+             data-detalles="Reloj de pulsera resistente al agua con cronómetro, luz LED nocturna y correa de silicona suave.">
+      <div class="multimedia">
+        <img src="img/relog deportivo.jpg" alt="Reloj Digital Sport">
+        <button class="card-action-btn btn-fav" data-id="6" data-nombre="Reloj Digital Sport" data-precio="95000" data-imagen="img/relog deportivo.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Reloj Digital Sport</h3>
+        <p class="precio">$95.000</p>
+        <button class="btn-agregar" data-id="6" data-nombre="Reloj Digital Sport" data-precio="95000" data-imagen="img/producto6.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 7 -->
+    <article class="tarjeta-producto" 
+             data-id="7" 
+             data-nombre="Chaqueta Cortavientos" 
+             data-precio="150000" 
+             data-imagen="img/cortavientos.jpg"
+             data-tipo="ropa"
+             data-detalles="Chaqueta ligera impermeable con cierre completo, perfecta para días lluviosos o de viento fuerte.">
+      <div class="multimedia">
+        <img src="img/cortavientos.jpg" alt="Chaqueta Cortavientos">
+        <button class="card-action-btn btn-fav" data-id="7" data-nombre="Chaqueta Cortavientos" data-precio="150000" data-imagen="img/cortavientos.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Chaqueta Cortavientos</h3>
+        <p class="precio">$150.000</p>
+        <button class="btn-agregar" data-id="7" data-nombre="Chaqueta Cortavientos" data-precio="150000" data-imagen="img/producto7.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 8 -->
+    <article class="tarjeta-producto" 
+             data-id="8" 
+             data-nombre="Mochila Antirrobo Urbana" 
+             data-precio="140000" 
+             data-imagen="img/mochila antirobo.webp"
+             data-tipo="accesorio"
+             data-detalles="Mochila con puerto de carga USB integrado, compartimento acolchado para laptop y cierres ocultos.">
+      <div class="multimedia">
+        <img src="img/mochila antirobo.webp" alt="Mochila Antirrobo Urbana">
+        <button class="card-action-btn btn-fav" data-id="8" data-nombre="Mochila Antirrobo Urbana" data-precio="140000" data-imagen="img/mochila antirobo.webp" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Mochila Antirrobo Urbana</h3>
+        <p class="precio">$140.000</p>
+        <button class="btn-agregar" data-id="8" data-nombre="Mochila Antirrobo Urbana" data-precio="140000" data-imagen="img/producto8.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 9 -->
+    <article class="tarjeta-producto" 
+             data-id="9" 
+             data-nombre="Camisa Estampada Casual" 
+             data-precio="75000" 
+             data-imagen="img/camisa estampada.jpg"
+             data-tipo="ropa"
+             data-detalles="Camisa manga corta con patrón moderno, tela fresca de lino y algodón para ocasiones casuales.">
+      <div class="multimedia">
+        <img src="img/camisa estampada.jpg" alt="Camisa Estampada Casual">
+        <button class="card-action-btn btn-fav" data-id="9" data-nombre="Camisa Estampada Casual" data-precio="75000" data-imagen="img/camisa estampada.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Camisa Estampada Casual</h3>
+        <p class="precio">$75.000</p>
+        <button class="btn-agregar" data-id="9" data-nombre="Camisa Estampada Casual" data-precio="75000" data-imagen="img/producto9.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 10 -->
+    <article class="tarjeta-producto" 
+             data-id="10" 
+             data-nombre="Billetera Minimalista de Cuero" 
+             data-precio="50000" 
+             data-imagen="img/billetera milimalista d ecuero.jpg"
+             data-tipo="accesorio"
+             data-detalles="Billetera compacta con protección RFID para tarjetas y espacio optimizado para billetes y documentos.">
+      <div class="multimedia">
+        <img src="img/billetera milimalista d ecuero.jpg" alt="Billetera Minimalista de Cuero">
+        <button class="card-action-btn btn-fav" data-id="10" data-nombre="Billetera Minimalista de Cuero" data-precio="50000" data-imagen="img/billetera milimalista d ecuero.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Billetera Minimalista de Cuero</h3>
+        <p class="precio">$50.000</p>
+        <button class="btn-agregar" data-id="10" data-nombre="Billetera Minimalista de Cuero" data-precio="50000" data-imagen="img/producto10.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 11 -->
+    <article class="tarjeta-producto" 
+             data-id="11" 
+             data-nombre="Zapatillas Urbanas Classic" 
+             data-precio="160000" 
+             data-imagen="img/zapatillas.jpg"
+             data-tipo="calzado"
+             data-detalles="Tenis casuales de gran durabilidad, suela antideslizante y diseño versátil para combinar con todo.">
+      <div class="multimedia">
+        <img src="img/zapatillas.jpg" alt="Zapatillas Urbanas Classic">
+        <button class="card-action-btn btn-fav" data-id="11" data-nombre="Zapatillas Urbanas Classic" data-precio="160000" data-imagen="iimg/zapatillas.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Zapatillas Urbanas Classic</h3>
+        <p class="precio">$160.000</p>
+        <button class="btn-agregar" data-id="11" data-nombre="Zapatillas Urbanas Classic" data-precio="160000" data-imagen="img/producto11.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 12 -->
+    <article class="tarjeta-producto" 
+             data-id="12" 
+             data-nombre="Lentes de Sol UV400" 
+             data-precio="55000" 
+             data-imagen="img/gafas.webp"
+             data-tipo="accesorio"
+             data-detalles="Gafas de sol con protección UV400 certificada, armazón ultraligero y estilo vanguardista.">
+      <div class="multimedia">
+        <img src="img/gafas.webp" alt="Lentes de Sol UV400">
+        <button class="card-action-btn btn-fav" data-id="12" data-nombre="Lentes de Sol UV400" data-precio="55000" data-imagen="img/gafas.webp" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Lentes de Sol UV400</h3>
+        <p class="precio">$55.000</p>
+        <button class="btn-agregar" data-id="12" data-nombre="Lentes de Sol UV400" data-precio="55000" data-imagen="img/producto12.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 13 -->
+    <article class="tarjeta-producto" 
+             data-id="13" 
+             data-nombre="Sweater Básico de Lana" 
+             data-precio="85000" 
+             data-imagen="img/sueter de lana.jpg"
+             data-tipo="ropa"
+             data-detalles="Suéter tejido de cuello redondo, textura suave que no pica y excelente retención de calor corporal.">
+      <div class="multimedia">
+        <img src="img/sueter de lana.jpg" alt="Sweater Básico de Lana">
+        <button class="card-action-btn btn-fav" data-id="13" data-nombre="Sweater Básico de Lana" data-precio="85000" data-imagen="img/sueter de lana.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Sweater Básico de Lana</h3>
+        <p class="precio">$85.000</p>
+        <button class="btn-agregar" data-id="13" data-nombre="Sweater Básico de Lana" data-precio="85000" data-imagen="img/producto13.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 14 -->
+    <article class="tarjeta-producto" 
+             data-id="14" 
+             data-nombre="Correa de Cuero Sintético" 
+             data-precio="40000" 
+             data-imagen="img/correa de cuero.jpg"
+             data-tipo="accesorio"
+             data-detalles="Cinturón formal e informal con hebilla metálica de alta resistencia y ajuste preciso de muescas.">
+      <div class="multimedia">
+        <img src="img/correa de cuero.jpg" alt="Correa de Cuero Sintético">
+        <button class="card-action-btn btn-fav" data-id="14" data-nombre="Correa de Cuero Sintético" data-precio="40000" data-imagen="img/correa de cuero.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Correa de Cuero Sintético</h3>
+        <p class="precio">$40.000</p>
+        <button class="btn-agregar" data-id="14" data-nombre="Correa de Cuero Sintético" data-precio="40000" data-imagen="img/producto14.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+    <!-- Producto 15 -->
+    <article class="tarjeta-producto" 
+             data-id="15" 
+             data-nombre="Bufanda Térmica Invernal" 
+             data-precio="35000" 
+             data-imagen="img/Bufanda-Negro-.jpg"
+             data-tipo="accesorio"
+             data-detalles="Bufanda larga tejida con material térmico suave al tacto, diseñada para máxima protección contra el frío.">
+      <div class="multimedia">
+        <img src="img/Bufanda-Negro-.jpg" alt="Bufanda Térmica Invernal">
+        <button class="card-action-btn btn-fav" data-id="15" data-nombre="Bufanda Térmica Invernal" data-precio="35000" data-imagen="img/Bufanda-Negro-.jpg" title="Favorito">
+          <i class="bi bi-heart-fill"></i>
+        </button>
+      </div>
+      <div class="info">
+        <h3>Bufanda Térmica Invernal</h3>
+        <p class="precio">$35.000</p>
+        <button class="btn-agregar" data-id="15" data-nombre="Bufanda Térmica Invernal" data-precio="35000" data-imagen="img/producto15.JPG">Añadir al carrito 🛒</button>
+      </div>
+    </article>
+
+  </section>
+
+</div>
+ 
+  <!-- PIE DE PÁGINA -->
+  <main class="container" aria-label="Contenido principal">
+    <section>
+      <h3>Síguenos en nuestras redes sociales</h3>
+      <p><i class="bi bi-facebook"></i> Facebook: Blackclothes</p>
+      <p><i class="bi bi-instagram"></i> Instagram: Blackclothes_2911</p> 
+      <p><i class="bi bi-whatsapp"></i> WhatsApp: 3194234571</p>
+    </section>
+  </main>
+
+  <!-- CHAT FLOTANTE ESTÉTICO CON LOGO EN EL BOTÓN -->
+  <div class="chat-container-wrapper">
+    <section id="chat" class="chat" aria-label="Chat de soporte">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <img src="img/logo secundario.jpg" alt="Logo Asistente" class="chat-avatar">
+          <div>
+            <span class="chat-title">Soporte Blackclothes</span>
+            <span class="chat-status">● En línea</span>
+          </div>
+        </div>
+        <button id="cerrar" aria-label="Cerrar chat" class="chat-close-btn">&times;</button>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <div class="message msg-bot">¡Hola! 🖤 Bienvenido a Blackclothes. ¿En qué puedo asesorarte el día de hoy?</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Escribe tu consulta..." />
+        <button id="enviar" aria-label="Enviar mensaje"><i class="bi bi-send-fill"></i></button>
+      </div>
+    </section>
+     
+    
+    <!-- Botón flotante con imagen de tu logo principal -->
+    <button id="chatToggle" class="chat-toggle" aria-label="Abrir chat">
+      <img src="img/logo secundario.jpg" alt="Abrir chat" class="chat-toggle-logo">
+    </button>
+  </div>
+
+  <!-- ================= MODALES ================= -->
+
+  <!-- 1. Modal de Resultados de Búsqueda -->
+  <div class="modal-overlay" id="modalBusqueda">
+    <div class="modal-content search-modal-content">
+      <div class="modal-header">
+        <h3>Resultados de Búsqueda</h3>
+        <button class="close-btn" data-close="modalBusqueda">&times;</button>
+      </div>
+      <div class="modal-body" id="busquedaResultadosContainer">
+        <!-- Contenido dinámico generado por JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Modal Detalle de Producto -->
+  <div class="modal-overlay" id="modalProductDetail">
+    <div class="modal-content product-detail-modal">
+      <div class="modal-header">
+        <h3 id="detailTitle">Detalle del Producto</h3>
+        <button class="close-btn" data-close="modalProductDetail">&times;</button>
+      </div>
+      <div class="modal-body detail-body-content">
+        <img id="detailImg" src="" alt="Imagen del producto" class="detail-img">
+        <div class="detail-info">
+          <span id="detailCategory" class="detail-tag"></span>
+          <p id="detailDesc" class="detail-description"></p>
+          <h2 id="detailPrice" class="detail-price"></h2>
+          <div class="detail-actions">
+            <button id="detailBtnCart" class="btn primary">Añadir al carrito 🛒</button>
+            <button id="detailBtnBuy" class="btn secondary">Realizar Compra ⚡</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Modal de Autenticación -->
+  <div class="modal-overlay" id="modalAuth">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="authModalTitle">Iniciar Sesión</h3>
+        <button class="close-btn" data-close="modalAuth">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-tabs">
+          <button type="button" class="tab-btn active" id="tabLoginBtn">Iniciar Sesión</button>
+          <button type="button" class="tab-btn" id="tabRegisterBtn">Registrarse</button>
+        </div>
+        <div id="authMessage" class="auth-message" style="display: none;"></div>
+        <form id="formAuth">
+          <div class="form-group" id="nameGroup" style="display: none;">
+            <label for="authName">Nombre Completo:</label>
+            <input type="text" id="authName" placeholder="Tu nombre" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="authEmail">Correo Electrónico:</label>
+            <input type="email" id="authEmail" placeholder="correo@ejemplo.com" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="authPassword">Contraseña:</label>
+            <input type="password" id="authPassword" placeholder="••••••••" class="form-input">
+          </div>
+          <button type="submit" id="authSubmitBtn" class="btn primary btn-block">Ingresar</button>
+        </form>
+        <div id="userLoggedInfo" style="display: none; text-align: center; padding: 10px;">
+          <p>¡Hola, <span id="loggedUserName"></span>!</p>
+          <p style="font-size: 13px; color: #666;">Ya has iniciado sesión correctamente.</p>
+          <button type="button" id="btnLogout" class="btn" style="background:#e74c3c; color:white; margin-top:15px;">Cerrar Sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Modal de Favoritos -->
+  <div class="modal-overlay" id="modalFavs">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Mis Favoritos <i class="bi bi-heart-fill" style="color:#ff4757;"></i></h3>
+        <button class="close-btn" data-close="modalFavs">&times;</button>
+      </div>
+      <div class="modal-body" id="favsListContainer"></div>
+    </div>
+  </div>
+
+  <!-- 5. Modal de Carrito -->
+  <div class="modal-overlay" id="modalCart">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Carrito de Compras <i class="bi bi-cart-fill" style="color:#2980b9;"></i></h3>
+        <button class="close-btn" data-close="modalCart">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="cartListContainer"></div>
+        <div id="cartCheckoutContainer" style="margin-top: 15px; text-align: right; display:none;">
+          <button id="btnCheckout" class="btn primary" style="width: 100%;">Realizar Compra ⚡</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/script principal.js"></script>
+
+</body>
+</html>
